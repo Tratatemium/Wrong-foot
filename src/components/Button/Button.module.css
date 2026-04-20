@@ -1,0 +1,26 @@
+.button {
+    height: 32px;
+    padding: var(--spacing-sm);
+    border-radius: var(--spacing-sm);
+    font-size: var(--body-md);
+    border: 1px solid;
+}
+
+.default {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-brand);
+}
+
+.neutral {
+    background: var(--color-neutral);
+    border-color: var(--border-neutral-secondary);
+    color: var(--color-primary-text);
+}
+
+.subtle {
+     background: var(--color-subtle);
+    border-color: none;
+    color: var(--color-primary-text);
+}
+
