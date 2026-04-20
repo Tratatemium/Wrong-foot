@@ -1,5 +1,8 @@
 import type { Preview } from '@storybook/react-vite'
 
+/// <reference types="vite/client" />
+import "../src/styles/variables.css" //path to your global css file
+
 const preview: Preview = {
   parameters: {
     controls: {
