@@ -12,6 +12,7 @@
 
   --color-accent: #5b4fcf;
 
+  --border-subtle: 1px solid transparent;
   --border-neutral: 1px solid #767676;
   --border-focus: 2px solid #94a3b8;
 
