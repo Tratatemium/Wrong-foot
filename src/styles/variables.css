@@ -4,15 +4,17 @@
   --color-foreground-accent: #5b4fcf;
   --color-foreground-subtle: #94a3b8;
 
-  --color-surface-primary: #efe1e1;
+  --colot-surface-primary: #ffffff;
   --color-surface-secondary: #2c2c2c;
   --color-surface-neutral: #e3e3e3;
+  --color-surface-tertiary: #efe1e1;
   --color-surface-accent: #5b4fcf;
   --color-surface-subtle: transparent;
 
   --color-accent: #5b4fcf;
 
-  --border-subtle: 1px solid transparent;
+  --border-none: 1px solid transparent;
+  --border-subtle: 1px solid #cbd5e1;
   --border-neutral: 1px solid #767676;
   --border-focus: 2px solid #94a3b8;
 

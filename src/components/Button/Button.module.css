@@ -7,7 +7,7 @@
   line-height: var(--spacing-md);
   padding: var(--spacing-sm);
   border-radius: var(--spacing-sm);
-  border: var(--border-subtle);
+  border: var(--border-none);
   cursor: pointer;
 }
 
