@@ -1,0 +1,37 @@
+.input {
+  appearance: none;
+  height: 18px;
+  width: 18px;
+  background: var(--color-surface-subtle);
+  border-radius: var(--spacing-xxs);
+  border: var(--border-secondary);
+}
+
+.input:checked {
+  border-color: transparent;
+  background: var(--color-surface-accent)
+    url("data:image/svg+xml,%3Csvg width='12' height='10' viewBox='0 0 12 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 9.4L0 5.4L1.4 4L4 6.6L10.6 0L12 1.4L4 9.4Z' fill='white'/%3E%3C/svg%3E")
+    center / 12px 10px no-repeat;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input:focus {
+  outline: none;
+  border: var(--border-secondary);
+}
+
+.wrapper:has(.input:focus)::before {
+  content: "";
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  background: var(--color-surface-focus);
+  pointer-events: none;
+}

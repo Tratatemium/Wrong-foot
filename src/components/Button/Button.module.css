@@ -20,7 +20,7 @@
 .neutral {
   color: var(--color-foreground-primary);
   background: var(--color-surface-neutral);
-  border: var(--border-neutral);
+  border: var(--border-primary);
 }
 
 .subtle {
@@ -31,5 +31,5 @@
 .button:hover {
   color: var(--color-foreground-secondary);
   background: var(--color-surface-accent);
-  border: var(--border-neutral);
+  border: var(--border-primary);
 }

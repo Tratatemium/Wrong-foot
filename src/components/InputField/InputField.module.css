@@ -17,6 +17,6 @@
 
 .input:focus {
   outline: var(--border-focus);
-  outline-offset: 2px;
+  outline-offset: var(--spacing-xxs);
   box-shadow: 0 0 0 2px var(--colot-surface-input);
 }

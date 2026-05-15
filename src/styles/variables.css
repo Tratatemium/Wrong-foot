@@ -8,14 +8,16 @@
   --color-surface-secondary: #2c2c2c;
   --color-surface-neutral: #e3e3e3;
   --color-surface-tertiary: #efe1e1;
+  --color-surface-focus: color-mix(in srgb, #625b71 20%, transparent);
   --color-surface-accent: #5b4fcf;
   --color-surface-subtle: transparent;
 
   --color-accent: #5b4fcf;
 
   --border-none: 1px solid transparent;
+  --border-primary: 1px solid #767676;
+  --border-secondary: 2px solid #49454f;
   --border-subtle: 1px solid #cbd5e1;
-  --border-neutral: 1px solid #767676;
   --border-focus: 2px solid #94a3b8;
 
   --font-sans: "Inter", "Segoe UI", sans-serif;
@@ -25,6 +27,7 @@
   --font-size-sm: 14px;
   --font-size-md: 16px;
 
+  --spacing-xxs: 2px;
   --spacing-xs: 6px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
