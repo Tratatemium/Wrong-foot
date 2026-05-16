@@ -1,11 +1,20 @@
 import type { Preview } from "@storybook/react-vite";
+import React from "react";
 
 /// <reference types="vite/client" />
 import "../src/styles/reset.css";
 import "../src/styles/variables.css";
 import "../src/styles/index.css";
+import { TasksProvider } from "../src/context/TasksContext/tasksProvider";
 
 const preview: Preview = {
+  decorators: [
+    (Story) => (
+      <TasksProvider>
+        <Story />
+      </TasksProvider>
+    ),
+  ],
   parameters: {
     controls: {
       matchers: {

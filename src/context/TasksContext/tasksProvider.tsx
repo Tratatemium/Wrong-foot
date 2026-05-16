@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 
 import type { Task } from "./tasksContext";
 import { TasksContext } from "./tasksContext";
@@ -6,7 +6,7 @@ import { TasksContext } from "./tasksContext";
 function TasksProvider({ children }: { children: React.ReactNode }) {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  function addTask() {
+  const addTask = useCallback(() => {
     setTasks((prev) => [
       ...prev,
       {
@@ -15,33 +15,43 @@ function TasksProvider({ children }: { children: React.ReactNode }) {
         completed: false,
       },
     ]);
-  }
+  }, []);
 
-  function deleteTask(id: string) {
+  const findTask = useCallback(
+    (id: string) => {
+      return tasks.find((task) => task.id === id);
+    },
+    [tasks],
+  );
+
+  const deleteTask = useCallback((id: string) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
-  }
-  function editTask(id: string, text: string) {
+  }, []);
+
+  const editTask = useCallback((id: string, text: string) => {
     setTasks((prev) =>
       prev.map((task) => (task.id === id ? { ...task, text } : task)),
     );
-  }
-  function toggleTask(id: string) {
+  }, []);
+
+  const setCompleted = useCallback((id: string, completed: boolean) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task,
+        task.id === id ? { ...task, completed: completed } : task,
       ),
     );
-  }
+  }, []);
 
   const value = useMemo(
     () => ({
       tasks,
       addTask,
+      findTask,
       deleteTask,
       editTask,
-      toggleTask,
+      setCompleted,
     }),
-    [tasks],
+    [tasks, addTask, findTask, deleteTask, editTask, setCompleted],
   );
 
   return (

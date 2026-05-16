@@ -1,72 +1,91 @@
 import { useState } from "react";
 
+import { useTasks } from "../../context/TasksContext/useTasks";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { InputField } from "../InputField/InputField";
 import { Button } from "../Button/Button";
 
 import styles from "./ListItem.module.css";
 
-function ListItem() {
+function ListItem({ id }: { id: string }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [value, setValue] = useState("");
   const [draft, setDraft] = useState("");
 
-  function startEdititing() {
-    setDraft(value);
+  const { findTask, deleteTask, editTask, setCompleted } = useTasks();
+
+  if (!findTask(id)) return null;
+
+  const getText = () => findTask(id)?.text || "";
+  const getChecked = () => findTask(id)?.completed || false;
+
+  function handleEdit() {
+    setDraft(getText());
     setIsEditing(true);
   }
 
   function handleSave() {
-    setValue(draft);
+    editTask(id, draft);
     setIsEditing(false);
   }
 
-  function cancelEditing() {
-    setDraft(value);
+  function handleCancel() {
+    setDraft(getText());
     setIsEditing(false);
+  }
+
+  function handleDelete() {
+    deleteTask(id);
+  }
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
+  ) {
+    setCompleted(id, e.target.checked);
   }
 
   return (
-    <form className={styles.form}>
-      <div className={styles.taskWrapper}>
-        <Checkbox />
-        {!isEditing ? (
-          <p>{value || "Untitled task"}</p>
-        ) : (
-          <InputField
-            autoFocus
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-          />
-        )}
-      </div>
-      <div className={styles.buttonsWrapper}>
-        {!isEditing ? (
-          <>
-            <Button variant="neutral" type="button" onClick={startEdititing}>
-              Edit
-            </Button>
-            <Button variant="subtle" type="button">
-              Delete
-            </Button>
-          </>
-        ) : (
-          <>
-            <Button
-              variant="default"
-              type="button"
-              onClick={handleSave}
-              disabled={!draft.trim()}
-            >
-              Save
-            </Button>
-            <Button variant="subtle" type="button" onClick={cancelEditing}>
-              Cancel
-            </Button>
-          </>
-        )}
-      </div>
-    </form>
+    <li>
+      <form className={styles.form}>
+        <div className={styles.taskWrapper}>
+          <Checkbox checked={getChecked()} onChange={handleChange} />
+          {!isEditing ? (
+            <p>{getText() || "Untitled task"}</p>
+          ) : (
+            <InputField
+              autoFocus
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+            />
+          )}
+        </div>
+        <div className={styles.buttonsWrapper}>
+          {!isEditing ? (
+            <>
+              <Button variant="neutral" type="button" onClick={handleEdit}>
+                Edit
+              </Button>
+              <Button variant="subtle" type="button" onClick={handleDelete}>
+                Delete
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                variant="default"
+                type="button"
+                onClick={handleSave}
+                disabled={!draft.trim()}
+              >
+                Save
+              </Button>
+              <Button variant="subtle" type="button" onClick={handleCancel}>
+                Cancel
+              </Button>
+            </>
+          )}
+        </div>
+      </form>
+    </li>
   );
 }
 

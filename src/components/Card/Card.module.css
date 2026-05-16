@@ -1,22 +1,8 @@
-.input {
-  height: 32px;
-  min-width: 126px;
+.card {
+  display: flex;
+  flex-direction: column;
   padding: var(--spacing-sm);
-  padding-right: 0;
-  background: var(--colot-surface-input);
-  border-radius: var(--spacing-xs);
-  border: var(--border-subtle);
-  font-size: var(--font-size-sm);
-  line-height: var(--spacing-md);
-  color: var(--color-foreground-primary);
-}
-
-.input::placeholder {
-  color: var(--color-foreground-subtle);
-}
-
-.input:focus {
-  outline: var(--border-focus);
-  outline-offset: var(--spacing-xxs);
-  box-shadow: 0 0 0 2px var(--colot-surface-input);
+  gap: var(--spacing-sm);
+  border: var(--border-primary);
+  border-radius: var(--border-primary);
 }
