@@ -1,20 +1,7 @@
-import { createContext, useContext, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 
-interface Task {
-  id: string;
-  text: string;
-  completed: boolean;
-}
-
-type TasksContextType = {
-  tasks: Task[];
-  addTask: () => void;
-  deleteTask: (id: string) => void;
-  editTask: (id: string, text: string) => void;
-  toggleTask: (id: string) => void;
-};
-
-const TasksContext = createContext<TasksContextType | null>(null);
+import type { Task } from "./tasksContext";
+import { TasksContext } from "./tasksContext";
 
 function TasksProvider({ children }: { children: React.ReactNode }) {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -62,14 +49,4 @@ function TasksProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-function useTasks() {
-  const context = useContext(TasksContext);
-
-  if (!context) {
-    throw new Error("useTasks must be used inside TasksProvider");
-  }
-
-  return context;
-}
-
-export { useTasks, TasksProvider };
+export { TasksProvider };
