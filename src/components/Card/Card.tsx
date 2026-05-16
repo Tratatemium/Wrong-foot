@@ -11,7 +11,7 @@ function Card() {
       {tasks.length === 0 ? (
         <p>You have no tasks!</p>
       ) : (
-        tasks.map((task) => <ListItem key={task.id} />)
+        tasks.map((task) => <ListItem key={task.id} id={task.id} />)
       )}
     </ul>
   );
