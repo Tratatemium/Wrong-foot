@@ -5,9 +5,9 @@ import { Checklist } from "./components/Checklist/Checklist";
 function App() {
   return (
     <TasksProvider>
-      <div className={styles.app}>
+      <main className={styles.main}>
         <Checklist />
-      </div>
+      </main>
     </TasksProvider>
   );
 }
