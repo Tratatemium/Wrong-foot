@@ -43,13 +43,18 @@ function ListItem({ id }: { id: string }) {
     setCompleted(id, e.target.checked);
   }
 
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    handleSave();
+  }
+
   return (
     <li>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.taskWrapper}>
           <Checkbox checked={getChecked()} onChange={handleChange} />
           {!isEditing ? (
-            <p>{getText() || "Untitled task"}</p>
+            <p className={styles.text}>{getText() || "Untitled task"}</p>
           ) : (
             <InputField
               autoFocus

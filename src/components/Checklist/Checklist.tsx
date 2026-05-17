@@ -1,6 +1,7 @@
 import { Card } from "../Card/Card";
 import { Button } from "../Button/Button";
 import { useTasks } from "../../context/TasksContext/useTasks";
+import { Title } from "../Title/Title";
 
 import styles from "./Checklist.module.css";
 
@@ -35,7 +36,7 @@ function Checklist() {
           />
         </svg>
         <div className={styles.headerText}>
-          <h2 className={styles.title}>My Checklist</h2>
+          <Title />
           <p className={styles.info}>{getInfo()}</p>
         </div>
       </header>

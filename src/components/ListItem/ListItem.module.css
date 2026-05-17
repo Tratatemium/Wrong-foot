@@ -21,3 +21,8 @@
 .taskWrapper {
   gap: var(--spacing-md);
 }
+
+.text {
+  min-width: 186px;
+  text-align: left;
+}

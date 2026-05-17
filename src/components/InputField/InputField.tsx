@@ -1,13 +1,18 @@
 import styles from "./InputField.module.css";
 
+interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  variant?: "default" | "title";
+}
+
 function InputField({
   type = "text",
+  variant = "default",
   className,
   ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) {
+}: InputFieldProps) {
   return (
     <input
-      className={`${styles.input} ${className ?? ""}`}
+      className={`${styles.input} ${styles[variant]} ${className ?? ""}`}
       type={type}
       {...props}
     />
